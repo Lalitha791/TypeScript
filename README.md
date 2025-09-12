@@ -91,4 +91,69 @@ String Literal Types – learn to define a type that accepts only a specified st
 
 Type Aliases – show you how to define new names for types using type aliases.
 ---
+// Type Annotation & Inference
+let username: string = "Lalitha";
+let score = 95; // inferred as number
+
+// Boolean
+let isLoggedIn: boolean = true;
+
+// Array
+let tags: string[] = ["typescript", "learning", "day6"];
+
+// Tuple
+let userInfo: [string, number] = ["Lalitha", 25];
+
+// Enum
+enum Role { Admin, Editor, Viewer }
+let currentRole: Role = Role.Editor;
+
+// Any Type
+let dynamicData: any = "Hello";
+dynamicData = 42;
+
+// Unknown Type
+let input: unknown = "Test";
+if (typeof input === "string") {
+  console.log(input.toUpperCase());
+}
+
+// Void Type
+function logMessage(): void {
+  console.log("Welcome to Day 6!");
+}
+
+// Never Type
+function throwError(): never {
+  throw new Error("Something went wrong!");
+}
+
+// Union Type
+let id: string | number = "abc123";
+id = 789;
+
+// String Literal Type
+type Status = "active" | "inactive";
+let userStatus: Status = "active";
+
+// Type Alias
+type UserID = string | number;
+let uid: UserID = "user_001";
+
+// Object Type
+let user = {
+  name: "Lalitha",
+  age: 25,
+  role: currentRole
+};
+
+output
+
+
+Welcome to Day 6!
+TEST
+
+Error: Something went wrong!
+
+console.log(username, score, tags, userInfo, currentRole);
 
