@@ -157,3 +157,147 @@ Error: Something went wrong!
 
 console.log(username, score, tags, userInfo, currentRole);
 
+
+
+
+
+
+---
+
+## ✨ Introduction to Generics in TypeScript
+
+### 🔹 What are Generics?
+
+Generics in TypeScript allow you to create **reusable components** that can work with multiple types, while still keeping **type safety**.
+They act like **placeholders for types** and get replaced at compile-time when you use the function/class/interface.
+
+Example:
+
+```ts
+function identity<T>(value: T): T {
+  return value;
+}
+
+console.log(identity<number>(100));    // 100
+console.log(identity<string>("hello")); // "hello"
+```
+
+---
+
+### 🔹 Why use Generics?
+
+* **Reusability** → write once, use with different types.
+* **Type safety** → prevents runtime errors by catching mistakes at compile-time.
+* **Flexibility** → works with any type (string, number, object, etc.).
+* **Clarity** → makes APIs easier to understand.
+
+---
+
+### 🔹 Common Uses of Generics
+
+1. **Functions**
+
+   ```ts
+   function getFirst<T>(arr: T[]): T {
+     return arr[0];
+   }
+   ```
+
+   Works with `number[]`, `string[]`, etc.
+
+2. **Classes**
+
+   ```ts
+   class Box<T> {
+     content: T;
+     constructor(value: T) {
+       this.content = value;
+     }
+   }
+
+   let stringBox = new Box<string>("Generics");
+   let numberBox = new Box<number>(123);
+   ```
+
+3. **Interfaces**
+
+   ```ts
+   interface ApiResponse<T> {
+     data: T;
+     status: number;
+   }
+
+   let userResponse: ApiResponse<{ id: number; name: string }> = {
+     data: { id: 1, name: "Alice" },
+     status: 200,
+   };
+   ```
+
+4. **Constraints**
+
+   ```ts
+   function getLength<T extends { length: number }>(item: T): number {
+     return item.length;
+   }
+
+   console.log(getLength("Hello"));   // ✅ works
+   console.log(getLength([1, 2, 3])); // ✅ works
+   // getLength(100); ❌ error
+   ```
+
+---
+
+### 🔹 Types vs Generics
+
+* **Types** are fixed:
+
+  ```ts
+  function add(a: number, b: number): number {
+    return a + b;
+  }
+  ```
+
+* **Generics** are flexible:
+
+  ```ts
+  function echo<T>(value: T): T {
+    return value;
+  }
+  ```
+
+---
+
+### 🔹 Generics at Runtime
+
+⚡ Important: Generics exist **only at compile-time**.
+
+* They are used by the TypeScript compiler to check types.
+* When compiled to JavaScript, **generics are erased**.
+
+Example:
+
+```ts
+function identity<T>(value: T): T {
+  return value;
+}
+```
+
+Compiles to JavaScript:
+
+```js
+function identity(value) {
+  return value;
+}
+```
+
+---
+
+### ✅ Summary
+
+* Generics = **type placeholders**.
+* Provide **reusable, flexible, and type-safe** code.
+* Work in **functions, classes, interfaces, and APIs**.
+* Exist only at compile-time → erased at runtime.
+
+---
+
