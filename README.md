@@ -301,3 +301,29 @@ function identity(value) {
 
 ---
 
+
+
+
+
+
+A **tuple** is a fixed-size, ordered collection of elements. Think of it like a mini-array where each item can be of a different type, and once created, you can't change its contents.
+
+### 🧠 In TypeScript:
+Tuples are a special type of array with **known types and lengths**.
+
+```ts
+let user: [string, number];
+user = ["Lalitha", 25]; // ✅
+user = [25, "Lalitha"]; // ❌ Type mismatch
+```
+
+### 🔍 Key Features:
+- **Fixed length**: You define how many elements it holds.
+- **Typed positions**: Each index has a specific type.
+- **Immutable structure**: You can’t add or remove elements without changing the type.
+
+### 🛠️ Use Cases:
+- Representing a pair like `[latitude, longitude]`
+- Returning multiple values from a function
+- Mapping fixed-format data like `[statusCode, message]`
+
