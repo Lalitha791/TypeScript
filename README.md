@@ -327,3 +327,47 @@ user = [25, "Lalitha"]; // ❌ Type mismatch
 - Returning multiple values from a function
 - Mapping fixed-format data like `[statusCode, message]`
 
+
+
+
+
+
+### 📌 Program Name: `never-type-demo.ts`
+
+### ✅ Code:
+```ts
+function throwError(message: string): never {
+  throw new Error(message);
+}
+
+console.log("Before error");
+throwError("Something went wrong!");
+console.log("After error"); // ❌ This line will never run
+```
+
+---
+
+### 🧠 Explanation:
+
+- `throwError()` is a function that **always throws an error**.
+- Because it **never returns**, its return type is `never`.
+- TypeScript uses `never` to signal: “This function will not finish normally.”
+
+---
+
+### ❌ Why the program doesn’t terminate cleanly:
+
+- When `throwError()` runs, it throws an exception.
+- That stops the program **immediately**.
+- So `"After error"` is **never printed**—the program halts at the error.
+
+---
+
+### 🔍 Why use `never` here?
+
+- It helps TypeScript **understand control flow**.
+- It warns developers: “Don’t expect anything after this function.”
+- It’s great for **error handling**, **exhaustive checks**, and **type safety**.
+
+
+
